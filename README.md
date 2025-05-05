@@ -14,21 +14,21 @@ Early detection of diabetes is critical for timely intervention, yet traditional
 
 ## Features and Execution Workflow
 
-### 3.1 Data Loading and Preprocessing
+### Data Loading and Preprocessing
 Medical data is ingested using Pandas, with preprocessing steps including removal of missing values, normalization of features (e.g., BMI, blood pressure), and validation of illogical entries (e.g., negative BMI). A derived feature, `BMI_to_Age`, is created to enhance model performance, and SMOTE is applied to balance class distributions.
 
-### 3.2 Statistical Analysis
+### Statistical Analysis
 Logistic regression is used to compute feature weights for a diabetes risk score, while Pearson correlation analyzes the sensitivity of features to the risk score, identifying key predictors like BMI and age.
 
-### 3.3 Deep Learning Models
+### Deep Learning Models
 Two deep learning models are implemented using PyTorch:
 - **Convolutional Neural Network (CNN)**: Extracts local patterns from medical features for accurate classification.
 - **Vision Transformer (ViT)**: Models complex relationships between features for robust predictions.
 
-### 3.4 Model Evaluation
+### Model Evaluation
 Models are evaluated using Accuracy and F1-Score metrics, ensuring reliable performance on imbalanced medical data. A subset of 50,000 records is used for training, and 10,000 for testing.
 
-### 3.5 Visualization and Reporting
+### Visualization and Reporting
 Interactive dashboards are generated using Plotly, displaying distributions of BMI, risk scores, and prediction probabilities, alongside a scatter plot of risk scores vs. probabilities. A PDF report summarizes findings and provides actionable insights for physicians.
 
 ---
@@ -71,72 +71,89 @@ To run the project, ensure the following prerequisites are met:
 
 Install the dependencies using:
 
+```bash
 pip install -r requirements.txt
-=======
-How to Run the Code
-6.1 Prerequisites
+```
 
-Ensure Python 3.8 or 3.9 is installed on your system.
-Ensure an active internet connection for initial package installation.
+---
 
-6.2 Setup
+## How to Run the Code
 
-Clone the repository:git clone <repository-url>
+### Prerequisites
+- Ensure Python 3.8 or 3.9 is installed on your system.
+- Ensure an active internet connection for initial package installation.
 
-Navigate to the project directory:cd <project-directory>
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/VDeniz/Diabetes-Detection.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Diabetes-Detection
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Install dependencies:pip install -r requirements.txt
+### Data Preparation
+- Download the dataset file `diabetes_binary_health_indicators_BRFSS2015.csv` from the link provided in the "Output Files" section and place it in `C:/Diabetes_Detection/`. Ensure the dataset contains over 250,000 records with the required columns as specified in the "Data Requirements" section.
 
-6.3 Data Preparation
+### Execution
+- Run the script in Python:
+  ```bash
+  python Diabetes_Detection.py
+  ```
+- Alternatively, execute in Jupyter Notebook by converting the script to a notebook or copying the code into cells.
+- The script processes the data, trains models, generates visualizations, and saves outputs in `C:/Diabetes_Detection/`. Execution may take a few minutes depending on system specifications.
 
-Download the dataset file diabetes_binary_health_indicators_BRFSS2015.csv from the link provided in the "Output Files" section and place it in C:/Diabetes_Detection/. Ensure the dataset contains over 250,000 records with the required columns as specified in the "Data Requirements" section.
+### View Outputs
+- Open the interactive dashboard (`Diabetes_Prediction_Dashboard.html`) in a web browser.
+- Review the detailed report at `C:/Diabetes_Detection/Diabetes_Detection_Report.pdf`.
 
-6.4 Execution
+### Troubleshooting
+- **Module Not Found**: Ensure all dependencies are installed correctly using `pip install -r requirements.txt`.
+- **File Not Found**: Verify the dataset is placed at `C:/Diabetes_Detection/diabetes_binary_health_indicators_BRFSS2015.csv` and the output directory has write permissions.
+- **Visualization Issues**: Ensure your browser supports Plotly visualizations (e.g., use the latest version of Chrome or Firefox).
 
-Run the script in Python:python Diabetes_Detection.py
+---
 
-Alternatively, execute in Jupyter Notebook by converting the script to a notebook or copying the code into cells.
-The script processes the data, trains models, generates visualizations, and saves outputs in C:/Diabetes_Detection/. Execution may take a few minutes depending on system specifications.
-
-6.5 View Outputs
-
-Open the interactive dashboard (Diabetes_Prediction_Dashboard.html) in a web browser.
-Review the detailed report at C:/Diabetes_Detection/Diabetes_Detection_Report.pdf.
-
-6.6 Troubleshooting
-
-Module Not Found: Ensure all dependencies are installed correctly using pip install -r requirements.txt.
-File Not Found: Verify the dataset is placed at C:/Diabetes_Detection/diabetes_binary_health_indicators_BRFSS2015.csv and the output directory has write permissions.
-Visualization Issues: Ensure your browser supports Plotly visualizations (e.g., use the latest version of Chrome or Firefox).
-
-Output Files
+## Output Files
 The project generates the following output files for analysis and reporting:
+- **Dataset**: The dataset used for analysis is available on Google Drive: [Download diabetes_binary_health_indicators_BRFSS2015.csv](https://drive.google.com/file/d/1preqqvZgSZUkM8hGcoBockhX-yEjVhuV/view?usp=sharing). Place it in `C:/Diabetes_Detection/`.
+- **Interactive Dashboard**: `C:/Diabetes_Detection/Diabetes_Prediction_Dashboard.html` - An interactive dashboard displaying BMI, risk score, and probability distributions, with a scatter plot of risk scores vs. prediction probabilities.
+- **PDF Report**: `C:/Diabetes_Detection/Diabetes_Detection_Report.pdf` - A detailed report summarizing methodology, results, feature analysis, and clinical applications.
+- **README**: `C:/Diabetes_Detection/README.md` - This documentation file, providing an overview and instructions for the project.
 
-Dataset: The dataset used for analysis is available on a public repository (e.g., UCI Machine Learning Repository). Download diabetes_binary_health_indicators_BRFSS2015.csv and place it in C:/Diabetes_Detection/.
-Interactive Dashboard: C:/Diabetes_Detection/Diabetes_Prediction_Dashboard.html - An interactive dashboard displaying BMI, risk score, and probability distributions, with a scatter plot of risk scores vs. prediction probabilities.
-PDF Report: C:/Diabetes_Detection/Diabetes_Detection_Report.pdf - A detailed report summarizing methodology, results, feature analysis, and clinical applications.
-README: C:/Diabetes_Detection/README.md - This documentation file, providing an overview and instructions for the project.
+---
 
-Interacting with the Dashboard
-The project provides an interactive dashboard (Diabetes_Prediction_Dashboard.html) for exploring results:
-
-BMI Distribution: Visualizes the distribution of Body Mass Index values across the dataset.
-Risk Score Distribution: Displays the distribution of computed diabetes risk scores.
-Probability Distribution: Shows the distribution of model prediction probabilities.
-Risk Score vs. Probability Scatter Plot: An interactive scatter plot where each point represents a patient, with hover data showing true labels. Colors range from dark purple (low probability) to red (high probability).
+## Interacting with the Dashboard
+The project provides an interactive dashboard (`Diabetes_Prediction_Dashboard.html`) for exploring results:
+- **BMI Distribution**: Visualizes the distribution of Body Mass Index values across the dataset.
+- **Risk Score Distribution**: Displays the distribution of computed diabetes risk scores.
+- **Probability Distribution**: Shows the distribution of model prediction probabilities.
+- **Risk Score vs. Probability Scatter Plot**: An interactive scatter plot where each point represents a patient, with hover data showing true labels. Colors range from dark purple (low probability) to red (high probability).
 
 Users can hover over visualizations to view detailed data points and explore patterns in diabetes risk.
 
-Contributing
-Contributions to the Diabetes Detection Project are welcome. To contribute:
+---
 
-Fork the repository and create a new branch for your feature or bug fix.
-Ensure your code adheres to the project's coding standards and includes appropriate documentation.
-Submit a pull request with a detailed description of your changes.
+## Contributing
+Contributions to the Diabetes Detection Project are welcome. To contribute:
+1. Fork the repository and create a new branch for your feature or bug fix.
+2. Ensure your code adheres to the project's coding standards and includes appropriate documentation.
+3. Submit a pull request with a detailed description of your changes.
 
 For major changes, please open an issue first to discuss the proposed modifications.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+---
 
-Note: Ensure the output directory (C:/Diabetes_Detection/) exists and has write permissions before running the script. For large datasets, ensure sufficient system resources (e.g., at least 8 GB RAM) to avoid performance issues. 
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+**Note**: Ensure the dataset file (`diabetes_binary_health_indicators_BRFSS2015.csv`) is downloaded from the provided Google Drive link and placed in `C:/Diabetes_Detection/` before running the script. Verify that the output directory exists and has write permissions.
+
+**Note**: Ensure the output directory (`C:/Diabetes_Detection/`) exists and has write permissions before running the script. For large datasets, ensure sufficient system resources (e.g., at least 8 GB RAM) to avoid memory issues.
